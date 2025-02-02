@@ -1,0 +1,29 @@
+# Project Charter
+
+## Business Background
+
+Human trafficking is a widespread global problem that affects millions of individuals, often occurring in concealed environments like hotel rooms. Organizations and law enforcement agencies that are dedicated to fighting human trafficking face significant challenges in identifying the locations of victims based on limited visual evidence. Frequently, photographs taken in hotel rooms serve as the only clues to identify these locations. However, the process of manually analyzing these images is time consuming, labor intensive, and prone to errors. With thousands of hotels, each with unique room configurations, accurately pinpointing locations requires an automated, scalable solution.
+This project aims to develop a machine learning model capable of matching images of hotel rooms to their respective hotels. By providing data driven, efficient solutions, this project will enable faster response times and improve the success rate of victim rescue operations. With our tools and expertise, the project will address current inefficiencies and set an example for how AI can be used to tackle societal human rights issues.
+
+## Scope
+
+Develop a computer vision model that can efficiently classify hotel images and predict the hotel ID from a new image. Deep machine learning techniques like convolutional Neural Networks (CNNs) or transformer-based models to build a model using previous hotel room pictures to identify a new hotel room. Incorporating an inference pipeline system that is capable of taking an image as its input and outputs the most likely hotel ID. Once the baseline model is sufficient, we will go on to incorporate image augmentation and feature extraction to improve model robustness against variations in lighting, angles, and occlusions. 
+Performance metrics will be evaluated using top-k accuracy, precision-recall, and other relevant metrics. Track model performance over iterations and compare new metrics to the baseline to optimize real-world performance. Solution can be incorporated by consumers like law enforcement and NGOs can then upload an image from some source and in turn will get a list of predicted hotel ID’s. This can assist in investigations where these predictions can be used as leads to verify and locate trafficking victims. This model can also potentially be integrated with other law enforcement databases to accelerate investigations, improve resource allocation, and enhance victim recovery efforts.
+
+##Personnel
+
+* Sneha Gonipati
+	* Skills: Data preprocessing in Pytorch/Pandas/R, Data Analysis and Presentation in Python, Data Exportation to Various Sources, Model Creation with NumPy and Sk.Learn, Basic Python UI Construction 
+  * Roles: Model Engineer
+* Zinnia Waheed
+  * Skills: Data preprocessing/manipulation in Python, machine learning, database/SQL, numpy, beautifulsoup, exploratory data analysis 
+  * Roles: Data Engineer, Model Engineer 
+* Aiah Aly
+  * Skills: Graph/image based classification, (GNNs) 
+  * Roles: Model Engineer
+* Heron Ziegel
+  * Skills: Front end, UI, graphics, back end, database/SQL, writing, data manipulation, GitHub, basic machine learning 
+  * Roles: GitHub coordinator, front end if needed, ML programming
+* Faisal Shaikh
+  * Skills: Data Preprocessing and Management (data wrangling, cleaning, data augmentation/manipulation) in Python/R, Exploratory Data Analysis in Python/R, basic SQL/database
+  * Roles: Data engineer (preprocessing/EDA)
