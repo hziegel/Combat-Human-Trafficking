@@ -10,7 +10,7 @@ This project aims to develop a machine learning model capable of matching images
 Develop a computer vision model that can efficiently classify hotel images and predict the hotel ID from a new image. Deep machine learning techniques like convolutional Neural Networks (CNNs) or transformer-based models to build a model using previous hotel room pictures to identify a new hotel room. Incorporating an inference pipeline system that is capable of taking an image as its input and outputs the most likely hotel ID. Once the baseline model is sufficient, we will go on to incorporate image augmentation and feature extraction to improve model robustness against variations in lighting, angles, and occlusions. 
 Performance metrics will be evaluated using top-k accuracy, precision-recall, and other relevant metrics. Track model performance over iterations and compare new metrics to the baseline to optimize real-world performance. Solution can be incorporated by consumers like law enforcement and NGOs can then upload an image from some source and in turn will get a list of predicted hotel ID’s. This can assist in investigations where these predictions can be used as leads to verify and locate trafficking victims. This model can also potentially be integrated with other law enforcement databases to accelerate investigations, improve resource allocation, and enhance victim recovery efforts.
 
-##Personnel
+## Personnel
 
 * Sneha Gonipati
 	* Skills: Data preprocessing in Pytorch/Pandas/R, Data Analysis and Presentation in Python, Data Exportation to Various Sources, Model Creation with NumPy and Sk.Learn, Basic Python UI Construction 
