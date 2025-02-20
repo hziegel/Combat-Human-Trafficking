@@ -1,0 +1,79 @@
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+from PIL import Image
+
+# Define paths
+DATA_FOLDER = "/content/drive/MyDrive/Combat-Human-Trafficking/Code/Data_Acquisition_and_Understanding"
+IMAGE_FOLDER = os.path.join(DATA_FOLDER, "train_images")
+
+# Load dataset and filter out missing entries
+train_csv_path = os.path.join(DATA_FOLDER, 'train.csv')
+
+if not os.path.exists(train_csv_path):
+    raise FileNotFoundError(f"❌ train.csv not found in {DATA_FOLDER}. Check the file location.")
+
+# Load dataset
+data_df = pd.read_csv(train_csv_path)
+
+# Filter out rows where 'image_id' or 'hotel_id' is missing
+data_df = data_df.dropna(subset=['image_id', 'hotel_id'])
+
+# Ensure only images that physically exist are kept
+data_df = data_df[data_df['image_id'].apply(lambda img: os.path.exists(os.path.join(IMAGE_FOLDER, img)))]
+
+# Function to display images
+def show_hotel_images(df, num_hotels=5, images_per_hotel=3):
+    """
+    Displays a grid of images from different hotels.
+
+    Parameters:
+    - df: DataFrame containing 'image_id' and 'hotel_id'
+    - num_hotels: Number of hotels to sample
+    - images_per_hotel: Number of images per hotel
+    """
+    unique_hotels = df['hotel_id'].unique()
+    if len(unique_hotels) == 0:
+        print("❌ No valid hotel data available.")
+        return
+
+    # Randomly sample hotels with available images
+    sampled_hotels = random.sample(list(unique_hotels), min(num_hotels, len(unique_hotels)))
+
+    fig, axes = plt.subplots(len(sampled_hotels), images_per_hotel, figsize=(images_per_hotel * 3, len(sampled_hotels) * 3))
+
+    if len(sampled_hotels) == 1:  # Handle single-row case
+        axes = [axes]
+
+    for i, hotel in enumerate(sampled_hotels):
+        hotel_images = df[df['hotel_id'] == hotel]['image_id'].tolist()
+
+        # Ensure only images that exist are selected
+        hotel_images = [img for img in hotel_images if os.path.exists(os.path.join(IMAGE_FOLDER, img))]
+
+        if len(hotel_images) == 0:
+            continue  # Skip this hotel if no valid images exist
+
+        selected_images = random.sample(hotel_images, min(images_per_hotel, len(hotel_images)))
+
+        for j, img_id in enumerate(selected_images):
+            img_path = os.path.join(IMAGE_FOLDER, img_id)
+
+            try:
+                image = Image.open(img_path)
+                axes[i][j].imshow(image)
+                axes[i][j].axis("off")
+
+                if j == 0:  # Label first image in each row
+                    axes[i][j].set_title(f"Hotel ID: {hotel}", fontsize=10, pad=10)
+
+            except Exception as e:
+                print(f"❌ Error loading image {img_id}: {e}")
+                axes[i][j].axis("off")  # Hide subplot if image fails
+
+    plt.tight_layout()
+    plt.show()
+
+# Run the function to display images
+show_hotel_images(data_df, num_hotels=5, images_per_hotel=3)
