@@ -8,6 +8,7 @@ Project Charter in the Doc folder contains the main plan and expected deliverabl
 Under "Code" File:
 Data_Acquisition_and_Understanding: Scripts for data collection, preprocessing, and exploratory analysis.
 Modeling: Contains Jupyter notebooks for machine learning models, including similarity training and ResNet inference.
+Demo: Gradio scripts for project demo and mapping (does not include pickle files)
 
 Under "Projects" File:
 All canvas assignments and submissions
